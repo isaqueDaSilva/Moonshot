@@ -20,7 +20,6 @@ struct MissionView: View {
         GeometryReader { geo in
             ScrollView {
                 LazyVStack {
-                    
                     VStack {
                         Image(mission.displayImage)
                             .resizable()
@@ -36,10 +35,10 @@ struct MissionView: View {
                     .shadow(radius: 10)
                     .padding([.top, .bottom])
                     
+                    DividerView(text: "Launch Date: \((mission.formattedLaunchDate))", showingLine: true)
+                        .font(.headline.bold())
+                    
                     LazyVStack(alignment: .leading) {
-                        Rectangle()
-                            .frame(height: 2)
-                        
                         Text("Mission Highlights:")
                             .font(.title.bold())
                             .padding([.top, .bottom], 5)
@@ -47,14 +46,13 @@ struct MissionView: View {
                         Text(mission.description)
                             .font(.headline.bold())
                             .padding(.bottom, 5)
-                        
                         Rectangle()
                             .frame(height: 2)
-                        
-                        Text("Crew:")
-                            .font(.title.bold())
                     }
                     .padding(.horizontal)
+                    
+                    DividerView(text: "Crew:", showingLine: false)
+                        .font(.title.bold())
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
