@@ -24,7 +24,7 @@ struct ListView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 50, height: 50)
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text(mission.displayName)
                                     .font(.title3.bold())
                                 Text(mission.formattedLaunchDate)
