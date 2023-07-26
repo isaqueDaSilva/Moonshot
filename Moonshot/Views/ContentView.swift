@@ -12,10 +12,6 @@ struct ContentView: View {
     let astronault: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let mission: [Missions] = Bundle.main.decode("missions.json")
     
-    let colums = [
-        GridItem(.adaptive(minimum: 150))
-    ]
-    
     var body: some View {
         NavigationView {
             Group {
