@@ -13,7 +13,7 @@ struct ContentView: View {
     let mission: [Missions] = Bundle.main.decode("missions.json")
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if showingGrid {
                     GridView(mission: mission, astronaut: astronault)

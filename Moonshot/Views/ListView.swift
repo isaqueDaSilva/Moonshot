@@ -12,32 +12,34 @@ struct ListView: View {
     let astronalt: [String: Astronaut]
     
     var body: some View {
-        List {
-            Section {
-                ForEach(mission) { mission in
-                    NavigationLink {
-                        MissionView(mission: mission, astronalts: astronalt)
-                    } label: {
-                        HStack {
-                            Image(mission.displayImage)
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 50)
-                            VStack(alignment: .leading) {
-                                Text(mission.displayName)
-                                    .font(.title3.bold())
-                                Text(mission.formattedLaunchDate)
-                                    .font(.subheadline.bold())
+        NavigationStack{
+            List {
+                Section {
+                    ForEach(mission) { mission in
+                        NavigationLink {
+                            MissionView(mission: mission, astronalts: astronalt)
+                        } label: {
+                            HStack {
+                                Image(mission.displayImage)
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                VStack(alignment: .leading) {
+                                    Text(mission.displayName)
+                                        .font(.title3.bold())
+                                    Text(mission.formattedLaunchDate)
+                                        .font(.subheadline.bold())
+                                }
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
                         }
                     }
                 }
+                .listRowBackground(Color("BackgroundColor"))
             }
-            .listRowBackground(Color("BackgroundColor"))
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
     }
 }
 
