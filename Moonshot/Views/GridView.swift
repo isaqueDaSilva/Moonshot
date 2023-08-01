@@ -16,38 +16,40 @@ struct GridView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: colums){
-                ForEach(mission) { mission in
-                    NavigationLink {
-                        MissionView(mission: mission, astronalts: astronaut)
-                    } label: {
-                        VStack{
-                            Image(mission.displayImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80, height: 80)
-                                .padding()
-                            VStack {
-                                Text(mission.displayName)
-                                    .font(.title3.bold())
-                                    .foregroundColor(.white)
-                                
-                                Text(mission.formattedLaunchDate)
-                                    .font(.headline.bold())
-                                    .foregroundColor(.white.opacity(0.5))
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: colums) {
+                    ForEach(mission) { mission in
+                        NavigationLink {
+                            MissionView(mission: mission, astronalts: astronaut)
+                        } label: {
+                            VStack{
+                                Image(mission.displayImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 80, height: 80)
+                                    .padding()
+                                VStack {
+                                    Text(mission.displayName)
+                                        .font(.title3.bold())
+                                        .foregroundColor(.white)
+                                    
+                                    Text(mission.formattedLaunchDate)
+                                        .font(.headline.bold())
+                                        .foregroundColor(.white.opacity(0.5))
+                                }
+                                .padding(.vertical)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("InformationColor"))
                             }
-                            .padding(.vertical)
                             .frame(maxWidth: .infinity)
-                            .background(Color("InformationColor"))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("InformationColor"))
+                            }
+                            .padding([.horizontal, .bottom], 10)
                         }
-                        .frame(maxWidth: .infinity)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("InformationColor"))
-                        }
-                        .padding([.horizontal, .bottom], 10)
                     }
                 }
             }

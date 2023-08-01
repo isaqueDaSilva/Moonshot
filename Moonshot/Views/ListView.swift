@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListView: View {
     let mission: [Missions]
-    let astronalt: [String: Astronaut]
+    let astronaut: [String: Astronaut]
     
     var body: some View {
         NavigationStack{
@@ -17,14 +17,14 @@ struct ListView: View {
                 Section {
                     ForEach(mission) { mission in
                         NavigationLink {
-                            MissionView(mission: mission, astronalts: astronalt)
+                            MissionView(mission: mission, astronalts: astronaut)
                         } label: {
                             HStack {
                                 Image(mission.displayImage)
-                                    .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 50, height: 50)
+                                
                                 VStack(alignment: .leading) {
                                     Text(mission.displayName)
                                         .font(.title3.bold())
@@ -45,9 +45,9 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static let mission: [Missions] = Bundle.main.decode("missions.json")
-    static let astronault: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    static let astronaut: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     
     static var previews: some View {
-        ListView(mission: mission, astronalt: astronault)
+        ListView(mission: mission, astronaut: astronaut)
     }
 }

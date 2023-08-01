@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showingGrid = true
-    let astronault: [String: Astronaut] = Bundle.main.decode("astronauts.json")
+    let astronaut: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let mission: [Missions] = Bundle.main.decode("missions.json")
     
     var body: some View {
         NavigationStack {
             Group {
                 if showingGrid {
-                    GridView(mission: mission, astronaut: astronault)
+                   GridView(mission: mission, astronaut: astronaut)
                 } else {
-                    ListView(mission: mission, astronalt: astronault)
+                    ListView(mission: mission, astronaut: astronaut)
                 }
             }
             .navigationTitle("Moonshot")
